@@ -10,7 +10,7 @@ export const ChatWindow = ({
   loading = false,
   sending = false,
   onSendMessage,
-  appName = 'Ragfish Assistant',
+  appName = 'DocMind Assistant',
   activeChatId = null,
 }) => {
   const messagesEndRef = useRef(null);
@@ -43,7 +43,7 @@ export const ChatWindow = ({
             {sending && (
               <div className="thinking-indicator">
                 <RagFishLogo size={20} withText={false} />
-                <span className="thinking-text">Ragfish is thinking...</span>
+                <span className="thinking-text">DocMind is thinking...</span>
                 <div className="thinking-dots">
                   <span className="thinking-dot" />
                   <span className="thinking-dot" />

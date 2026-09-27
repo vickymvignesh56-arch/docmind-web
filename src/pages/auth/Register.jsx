@@ -92,7 +92,7 @@ export const Register = () => {
                 <span>Knowledge-Driven AI.</span>
               </h2>
               <p className="auth-brand-desc">
-                Join Ragfish to effortlessly index enterprise documents and deploy
+                Join DocMind to effortlessly index enterprise documents and deploy
                 intelligent assistants across departments.
               </p>
             </div>
@@ -108,7 +108,7 @@ export const Register = () => {
           <div className="auth-form-header">
             <h1 className="auth-form-title">Create Account</h1>
             <p className="auth-form-subtitle">
-              Get started with your free Ragfish workspace
+              Get started with your free DocMind workspace
             </p>
           </div>
 
@@ -202,7 +202,7 @@ export const Register = () => {
               loading={loading}
               className="w-full mt-2"
             >
-              Create Ragfish Account
+              Create DocMind Account
             </Button>
 
             <div className="auth-form-footer">

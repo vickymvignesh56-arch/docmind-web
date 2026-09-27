@@ -59,7 +59,7 @@ export const Login = () => {
                 <span>Zero Hallucination.</span>
               </h2>
               <p className="auth-brand-desc">
-                Ragfish connects your enterprise documents to state-of-the-art LLMs
+                DocMind connects your enterprise documents to state-of-the-art LLMs
                 through independent, reusable knowledge channels.
               </p>
             </div>
@@ -89,7 +89,7 @@ export const Login = () => {
           </div>
 
           <div className="auth-brand-footer">
-            © {new Date().getFullYear()} Ragfish AI Platform. All rights reserved.
+            © {new Date().getFullYear()} DocMind AI Platform. All rights reserved.
           </div>
         </div>
 
@@ -98,7 +98,7 @@ export const Login = () => {
           <div className="auth-form-header">
             <h1 className="auth-form-title">Sign In</h1>
             <p className="auth-form-subtitle">
-              Enter your credentials to access your Ragfish workspace
+              Enter your credentials to access your DocMind workspace
             </p>
           </div>
 
@@ -154,7 +154,7 @@ export const Login = () => {
               loading={loading}
               className="w-full mt-2"
             >
-              Sign In to Ragfish
+              Sign In to DocMind
             </Button>
 
             <div className="auth-form-footer">

@@ -74,7 +74,7 @@ export const RagFishLogo = ({ size = 32, withText = true, className = '', isDark
             alignItems: 'center',
           }}
         >
-          RAG<span style={{ color: '#2563eb' }}>FISH</span>
+          Doc<span style={{ color: '#2563eb' }}>Mind</span>
         </span>
       )}
     </div>

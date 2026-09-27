@@ -108,7 +108,7 @@ export const LLMProviderSettings = () => {
       >
         <Info size={20} color="var(--color-primary)" style={{ flexShrink: 0, marginTop: '2px' }} />
         <div style={{ fontSize: 'var(--font-size-xs)', color: '#0369a1', lineHeight: 1.5 }}>
-          <strong>Provider Architecture:</strong> Ragfish allows configuring Gemini, OpenAI, or Anthropic.
+          <strong>Provider Architecture:</strong> DocMind allows configuring Gemini, OpenAI, or Anthropic.
           Your API keys are encrypted at rest using AES-256 before being stored. Only one provider can be active at a time to power vector embeddings and chat responses.
         </div>
       </div>

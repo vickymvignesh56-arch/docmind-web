@@ -7,7 +7,7 @@ export const PublicRoute = () => {
   const { isAuthenticated, loading } = useAuth();
 
   if (loading) {
-    return <Loader fullScreen={true} message="Initializing Ragfish..." />;
+    return <Loader fullScreen={true} message="Initializing DocMind..." />;
   }
 
   // If already authenticated, redirect to /dashboard

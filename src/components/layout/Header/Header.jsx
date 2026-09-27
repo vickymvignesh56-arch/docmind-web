@@ -34,7 +34,7 @@ export const Header = () => {
     } else if (path.startsWith('/channels/')) {
       currentInfo = { title: 'Channel Details', subtitle: 'Manage and upload documents to this channel' };
     } else {
-      currentInfo = { title: 'Ragfish', subtitle: 'Intelligent Knowledge & RAG Platform' };
+      currentInfo = { title: 'DocMind', subtitle: 'Intelligent Knowledge & RAG Platform' };
     }
   }
 
