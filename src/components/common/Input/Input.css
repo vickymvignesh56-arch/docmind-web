@@ -1,0 +1,129 @@
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 100%;
+}
+
+.input-label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.input-field:focus {
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px var(--color-primary-glow);
+}
+
+.input-field::placeholder {
+  color: var(--color-text-muted);
+}
+
+.input-field:disabled {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.input-with-icon-left {
+  padding-left: 2.5rem;
+}
+
+.input-with-icon-right {
+  padding-right: 2.5rem;
+}
+
+.input-icon-left {
+  position: absolute;
+  left: 0.875rem;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon-right {
+  position: absolute;
+  right: 0.875rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.input-icon-right:hover {
+  color: var(--color-text-primary);
+}
+
+.input-error-msg {
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.input-field.has-error {
+  border-color: var(--color-error);
+}
+
+.input-field.has-error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+/* Dark theme style (Used in Auth cards) */
+.input-group-dark .input-label {
+  color: #cbd5e1;
+}
+
+.input-group-dark .input-field {
+  background-color: rgba(15, 23, 42, 0.6);
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+.input-group-dark .input-field:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+  background-color: rgba(15, 23, 42, 0.8);
+}
+
+.input-group-dark .input-field::placeholder {
+  color: #64748b;
+}
+
+.input-group-dark .input-icon-left,
+.input-group-dark .input-icon-right {
+  color: #64748b;
+}
+
+.input-group-dark .input-icon-right:hover {
+  color: #cbd5e1;
+}
