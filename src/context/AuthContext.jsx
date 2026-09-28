@@ -53,6 +53,17 @@ export const AuthProvider = ({ children }) => {
 
   const register = useCallback(async ({ name, email, password }) => {
     const response = await authApi.register({ name, email, password });
+    const authToken = response?.token || response?.data?.token;
+    const userData = response?.data || response?.user;
+
+    if (authToken) {
+      storage.setToken(authToken);
+      setToken(authToken);
+      if (userData) {
+        storage.setUser(userData);
+        setUser(userData);
+      }
+    }
     return response;
   }, []);
 

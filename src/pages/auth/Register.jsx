@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, User, CheckCircle2 } from 'lucide-react';
+import { Mail, Lock, User } from 'lucide-react';
 import { RagFishLogo } from '../../components/common/RagFishLogo';
 import { Input } from '../../components/common/Input/Input';
 import { Button } from '../../components/common/Button/Button';
 import { ErrorMessage } from '../../components/common/ErrorMessage/ErrorMessage';
 import { useAuth } from '../../hooks/useAuth';
+import { AppContext } from '../../context/AppContext';
+import { storage } from '../../utils/storage';
 import { validateEmail, validatePassword, validateName } from '../../utils/validators';
 import './Auth.css';
 
@@ -19,10 +21,10 @@ export const Register = () => {
 
   const [errors, setErrors] = useState({});
   const [apiError, setApiError] = useState(null);
-  const [successMsg, setSuccessMsg] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const { register } = useAuth();
+  const { toast } = useContext(AppContext) || {};
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -54,26 +56,29 @@ export const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Prevent duplicate submission if already processing
+    if (loading) return;
+
     setApiError(null);
-    setSuccessMsg(null);
     if (!validate()) return;
 
     setLoading(true);
     try {
       // Backend requires name, email, password, and isActive: true
-      await register({
+      const response = await register({
         name: formData.name.trim(),
         email: formData.email.trim(),
         password: formData.password,
       });
 
-      setSuccessMsg('Account created successfully! Redirecting to sign in...');
-      setTimeout(() => {
-        navigate('/login');
-      }, 2000);
+      // Non-blocking toast notification
+      toast?.success('Account created successfully!');
+
+      // Immediate redirect without delay or setTimeout
+      const hasToken = Boolean(response?.token || response?.data?.token || storage.getToken());
+      navigate(hasToken ? '/dashboard' : '/login', { replace: true });
     } catch (err) {
       setApiError(err.message || 'Registration failed. Please try again.');
-    } finally {
       setLoading(false);
     }
   };
@@ -120,20 +125,7 @@ export const Register = () => {
             />
           )}
 
-          {successMsg && (
-            <div
-              className="flex items-center gap-2 p-3 mb-4 rounded-lg"
-              style={{
-                backgroundColor: 'rgba(16, 185, 129, 0.15)',
-                border: '1px solid rgba(16, 185, 129, 0.3)',
-                color: '#34d399',
-                fontSize: 'var(--font-size-xs)',
-              }}
-            >
-              <CheckCircle2 size={16} />
-              <span>{successMsg}</span>
-            </div>
-          )}
+
 
           <form onSubmit={handleSubmit} className="auth-form" noValidate>
             <Input
