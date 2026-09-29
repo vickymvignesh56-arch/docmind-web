@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Sidebar } from '../Sidebar/Sidebar';
 import { Header } from '../Header/Header';
 import { Toast } from '../../common/Toast/Toast';
@@ -9,13 +9,15 @@ import './MainLayout.css';
 
 export const MainLayout = () => {
   const { toasts, removeToast, confirmDialog, closeConfirm } = useContext(AppContext);
+  const location = useLocation();
+  const isChatWorkspace = location.pathname.includes('/chat');
 
   return (
     <div className="main-layout">
       <Sidebar />
       <div className="main-content-wrapper">
         <Header />
-        <main className="main-page-content">
+        <main className={`main-page-content ${isChatWorkspace ? 'is-chat-workspace' : ''}`}>
           <Outlet />
         </main>
       </div>

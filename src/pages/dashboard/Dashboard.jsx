@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Bot, FolderGit2, Cpu, Plus, MessageSquare, ArrowRight, FolderPlus } from 'lucide-react';
+import { Bot, FolderGit2, Cpu, Plus, ArrowRight, FolderPlus } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import { useApps } from '../../hooks/useApps';
 import { useChannels } from '../../hooks/useChannels';

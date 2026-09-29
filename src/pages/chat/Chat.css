@@ -1,7 +1,7 @@
 .chat-page-container {
   display: flex;
-  height: calc(100vh - var(--header-height));
-  margin: calc(-1 * var(--space-8));
+  height: 100%;
+  width: 100%;
   background-color: var(--color-bg-app);
   overflow: hidden;
 }
@@ -12,12 +12,12 @@
   flex-direction: column;
   min-width: 0;
   height: 100%;
+  position: relative;
 }
 
 @media (max-width: 768px) {
   .chat-page-container {
     flex-direction: column;
-    margin: calc(-1 * var(--space-4));
     height: auto;
     min-height: calc(100vh - var(--header-height));
   }

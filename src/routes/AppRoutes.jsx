@@ -21,20 +21,19 @@ import { ChannelDetails } from '../pages/channels/ChannelDetails';
 import { Resources } from '../pages/resources/Resources';
 import { Chat } from '../pages/chat/Chat';
 
+import { Profile } from '../pages/profile/Profile';
 import { Settings } from '../pages/settings/Settings';
-import { ProfileSettings } from '../pages/settings/ProfileSettings';
-import { LLMProviderSettings } from '../pages/settings/LLMProviderSettings';
 
 export const AppRoutes = () => {
   return (
     <Routes>
-      {/* Public Routes (Dark Theme) */}
+      {/* Public Routes (Auth) */}
       <Route element={<PublicRoute />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Route>
 
-      {/* Protected Routes (Light Theme via MainLayout) */}
+      {/* Protected Routes (Authenticated Workspace) */}
       <Route element={<ProtectedRoute />}>
         <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
@@ -57,10 +56,15 @@ export const AppRoutes = () => {
           <Route path="/apps/:appId/chat" element={<Chat />} />
           <Route path="/apps/:appId/chat/:chatId" element={<Chat />} />
 
-          {/* Settings */}
+          {/* Profile (Dedicated Personal Profile Page) */}
+          <Route path="/profile" element={<Profile />} />
+
+          {/* Settings (Dedicated LLM Provider Settings Page) */}
           <Route path="/settings" element={<Settings />} />
-          <Route path="/settings/profile" element={<ProfileSettings />} />
-          <Route path="/settings/providers" element={<LLMProviderSettings />} />
+
+          {/* Backwards Compatibility Navigation Aliases */}
+          <Route path="/settings/profile" element={<Navigate to="/profile" replace />} />
+          <Route path="/settings/providers" element={<Navigate to="/settings" replace />} />
         </Route>
       </Route>
 

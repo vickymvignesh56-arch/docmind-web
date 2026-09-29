@@ -11,7 +11,11 @@ export const userApi = {
 
   updateProfile: async (userData) => {
     const response = await api.put('/user-profile', userData);
-    return response.data?.data;
+    const data = response.data?.data || response.data || {};
+    if (userData.avatar !== undefined && data.avatar === undefined) {
+      data.avatar = userData.avatar;
+    }
+    return data;
   },
 
   changePassword: async ({ oldPassword, newPassword }) => {

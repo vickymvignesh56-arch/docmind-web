@@ -15,14 +15,28 @@
 
 .main-page-content {
   flex: 1;
-  padding: var(--space-8);
-  max-width: 1400px;
+  padding: var(--space-6) var(--space-8);
+  max-width: 1360px;
   width: 100%;
   margin: 0 auto;
+}
+
+.main-page-content.is-chat-workspace {
+  padding: 0 !important;
+  max-width: 100% !important;
+  height: calc(100vh - var(--header-height));
+  overflow: hidden;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
   .main-page-content {
     padding: var(--space-4);
+  }
+
+  .main-page-content.is-chat-workspace {
+    height: auto;
+    min-height: calc(100vh - var(--header-height));
+    overflow: visible;
   }
 }

@@ -17,7 +17,6 @@ import { appApi } from '../../services/appApi';
 import { channelApi } from '../../services/channelApi';
 import { appChannelApi } from '../../services/appChannelApi';
 import { resourceApi } from '../../services/resourceApi';
-import { ResourceList } from '../../components/resource/ResourceList/ResourceList';
 import { Button } from '../../components/common/Button/Button';
 import { Modal } from '../../components/common/Modal/Modal';
 import { Loader } from '../../components/common/Loader/Loader';

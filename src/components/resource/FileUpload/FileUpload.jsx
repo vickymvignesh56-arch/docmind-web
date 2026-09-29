@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { UploadCloud, FileCheck, AlertCircle } from 'lucide-react';
+import { UploadCloud, FileCheck, AlertCircle, Loader2 } from 'lucide-react';
 import { validateFile } from '../../../utils/validators';
 import './FileUpload.css';
 
@@ -9,8 +9,8 @@ export const FileUpload = ({ onUpload, uploading = false }) => {
   const fileInputRef = useRef(null);
 
   const handleFile = async (file) => {
+    if (uploading || !file) return;
     setError(null);
-    if (!file) return;
 
     const validationErr = validateFile(file);
     if (validationErr) {
@@ -30,7 +30,9 @@ export const FileUpload = ({ onUpload, uploading = false }) => {
 
   const handleDragOver = (e) => {
     e.preventDefault();
-    setIsDragging(true);
+    if (!uploading) {
+      setIsDragging(true);
+    }
   };
 
   const handleDragLeave = (e) => {
@@ -41,6 +43,7 @@ export const FileUpload = ({ onUpload, uploading = false }) => {
   const handleDrop = (e) => {
     e.preventDefault();
     setIsDragging(false);
+    if (uploading) return;
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       handleFile(e.dataTransfer.files[0]);
     }
@@ -55,11 +58,13 @@ export const FileUpload = ({ onUpload, uploading = false }) => {
   return (
     <div>
       <div
-        className={`file-upload-dropzone ${isDragging ? 'is-dragging' : ''}`}
+        className={`file-upload-dropzone ${isDragging ? 'is-dragging' : ''} ${uploading ? 'is-uploading' : ''}`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        onClick={() => fileInputRef.current?.click()}
+        onClick={() => {
+          if (!uploading) fileInputRef.current?.click();
+        }}
       >
         <input
           type="file"
@@ -71,25 +76,31 @@ export const FileUpload = ({ onUpload, uploading = false }) => {
         />
 
         <div className="file-upload-icon-box">
-          <UploadCloud size={28} />
+          {uploading ? (
+            <Loader2 size={24} className="animate-spin" />
+          ) : (
+            <UploadCloud size={24} />
+          )}
         </div>
 
         <h4 className="file-upload-title">
-          {uploading ? 'Uploading and queueing document...' : 'Click to upload or drag and drop'}
+          {uploading ? 'Uploading and vectorizing document...' : 'Click to upload or drag & drop'}
         </h4>
         <p className="file-upload-subtitle">
-          Add PDF or DOCX documents to build this channel's knowledge index
+          {uploading
+            ? 'Please wait while file chunks and vector embeddings are generated'
+            : 'Add PDF or DOCX documents to index knowledge into this channel'}
         </p>
 
         <div className="file-upload-limits">
-          <FileCheck size={14} color="var(--color-primary)" />
+          <FileCheck size={13} color="var(--color-primary)" />
           <span>Supported: PDF, DOCX (Max 10 MB per file)</span>
         </div>
       </div>
 
       {error && (
         <div className="flex items-center gap-2 mt-3" style={{ color: 'var(--color-error)', fontSize: 'var(--font-size-xs)' }}>
-          <AlertCircle size={15} />
+          <AlertCircle size={14} />
           <span>{error}</span>
         </div>
       )}

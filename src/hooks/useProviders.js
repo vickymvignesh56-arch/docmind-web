@@ -6,7 +6,7 @@ export const useProviders = () => {
   const [providers, setProviders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [savingProvider, setSavingProvider] = useState(null); // provider type being saved
-  const [activatingProvider, setActivatingProvider] = useState(false);
+  const [togglingProvider, setTogglingProvider] = useState(null); // provider type being toggled
   const [error, setError] = useState(null);
 
   const appContext = useContext(AppContext);
@@ -43,7 +43,6 @@ export const useProviders = () => {
           embeddingModel,
           chatModel,
         });
-        toast?.success(`${provider} provider saved successfully`);
         await fetchProviders();
         return saved;
       } catch (err) {
@@ -58,20 +57,17 @@ export const useProviders = () => {
   );
 
   const toggleStatus = useCallback(
-    async (isActive) => {
-      setActivatingProvider(true);
+    async (isActive, providerType) => {
+      setTogglingProvider(providerType || true);
       try {
         const updated = await providerApi.updateStatus(isActive);
-        toast?.success(
-          isActive ? 'Provider activated successfully' : 'Provider deactivated'
-        );
         await fetchProviders();
         return updated;
       } catch (err) {
         toast?.error(err.message, 'Status Update Failed');
         throw err;
       } finally {
-        setActivatingProvider(false);
+        setTogglingProvider(null);
       }
     },
     [fetchProviders, toast]
@@ -79,9 +75,11 @@ export const useProviders = () => {
 
   return {
     providers,
+    setProviders,
     loading,
     savingProvider,
-    activatingProvider,
+    togglingProvider,
+    activatingProvider: Boolean(togglingProvider),
     error,
     fetchProviders,
     saveProvider,

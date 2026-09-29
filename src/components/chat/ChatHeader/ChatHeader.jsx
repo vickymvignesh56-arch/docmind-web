@@ -7,11 +7,8 @@ import './ChatHeader.css';
 export const ChatHeader = ({ app, currentChat, onNewChat }) => {
   const navigate = useNavigate();
 
-  // Dynamic Chat Header:
-  // If no active chat: Title: "New Conversation", Subtitle: "Start a new conversation"
-  // If existing chat selected: Title: chat.title, Subtitle: "Conversation"
-  const title = currentChat?.title ? currentChat.title : 'New Conversation';
-  const subtitle = currentChat ? 'Conversation' : 'Start a new conversation';
+  const chatTitle = currentChat?.title || 'New Conversation';
+  const appTitle = app?.name || 'AI Assistant';
 
   return (
     <div className="chat-header-bar">
@@ -21,18 +18,23 @@ export const ChatHeader = ({ app, currentChat, onNewChat }) => {
           className="btn btn-ghost btn-sm"
           onClick={() => navigate(`/apps/${app?.id || ''}`)}
           title="Back to App details"
-          style={{ padding: '4px' }}
+          style={{ padding: '6px' }}
         >
-          <ArrowLeft size={18} />
+          <ArrowLeft size={16} />
         </button>
 
         <div className="chat-header-icon">
-          <Bot size={20} />
+          <Bot size={18} />
         </div>
 
         <div className="chat-header-titles">
-          <span className="chat-header-app-name">{title}</span>
-          <span className="chat-header-chat-title">{subtitle}</span>
+          <div className="flex items-center gap-2">
+            <span className="chat-header-app-name">{appTitle}</span>
+            <span className="badge badge-default" style={{ fontSize: '0.6875rem' }}>
+              RAG Workspace
+            </span>
+          </div>
+          <span className="chat-header-chat-title">{chatTitle}</span>
         </div>
       </div>
 

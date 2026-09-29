@@ -1,0 +1,437 @@
+/* Settings Page Styling - Dedicated LLM Provider SaaS Aesthetics */
+
+.settings-page {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.settings-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.settings-header h2 {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.settings-header p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* LLM Provider Section Header */
+.llm-section-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+}
+
+.llm-section-header h3 {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.llm-section-header p {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Feedback Banners */
+.llm-success-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-success-light);
+  border: 1px solid var(--color-success-border);
+  border-radius: var(--radius-md);
+  color: var(--color-success-text);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.llm-error-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-error-light);
+  border: 1px solid var(--color-error-border);
+  border-radius: var(--radius-md);
+  color: var(--color-error-text);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+/* Provider List Container */
+.llm-provider-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Individual LLM Provider Card */
+.llm-provider-card {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  box-shadow: var(--shadow-xs);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.llm-provider-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Provider Header Row (Name/Logo on Left, Actions on Right) */
+.llm-provider-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.llm-provider-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.llm-provider-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.llm-provider-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.llm-provider-name {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.llm-provider-tag {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+/* Grouped Controls: [Edit] and [Status Toggle] directly side-by-side */
+.llm-provider-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.llm-edit-action-btn {
+  font-weight: 500;
+}
+
+/* Status Toggle Component (Switch + Label) */
+.llm-status-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 5px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-subtle);
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.llm-status-toggle:hover:not(:disabled) {
+  border-color: var(--color-border-strong);
+}
+
+.llm-status-toggle.is-active {
+  background: var(--color-success-light);
+  border-color: var(--color-success-border);
+  color: var(--color-success-text);
+}
+
+.llm-status-toggle.is-inactive {
+  background: var(--color-bg-subtle);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.llm-status-toggle.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Toggle Switch Slider Track */
+.llm-toggle-track {
+  width: 30px;
+  height: 18px;
+  border-radius: 10px;
+  background: var(--color-border-strong);
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  transition: background-color var(--transition-fast);
+}
+
+.llm-status-toggle.is-active .llm-toggle-track {
+  background: var(--color-success);
+}
+
+/* Toggle Switch Knob Thumb */
+.llm-toggle-knob {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transform: translateX(0);
+  transition: transform var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.llm-status-toggle.is-active .llm-toggle-knob {
+  transform: translateX(12px);
+}
+
+/* Toggle Label (ON / OFF) */
+.llm-toggle-state-text {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-family: var(--font-family-mono);
+  min-width: 22px;
+  text-align: center;
+}
+
+/* Provider Specs Box */
+.llm-provider-specs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg-subtle);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.llm-spec-row {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-xs);
+  min-height: 24px;
+}
+
+.llm-spec-label {
+  width: 140px;
+  flex-shrink: 0;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.llm-spec-value {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  word-break: break-all;
+}
+
+.llm-spec-key {
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  background-color: var(--color-bg-surface);
+  padding: 2px 7px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-border);
+}
+
+/* Status Indicator Dot & Label in Specs */
+.llm-status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.llm-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  display: inline-block;
+}
+
+.llm-status-dot.active {
+  background-color: var(--color-success);
+  box-shadow: 0 0 0 2px var(--color-success-border);
+}
+
+.llm-status-dot.inactive {
+  background-color: var(--color-text-subtle);
+  border: 1px solid var(--color-border-strong);
+}
+
+.llm-status-text.active {
+  color: var(--color-success-text);
+}
+
+.llm-status-text.inactive {
+  color: var(--color-text-muted);
+}
+
+/* Edit Modal Form */
+.llm-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.llm-modal-error-banner {
+  padding: var(--space-3);
+  background: var(--color-error-light);
+  color: var(--color-error);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.llm-edit-provider-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-bg-subtle);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.llm-edit-provider-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.llm-edit-provider-name {
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+.llm-edit-provider-status {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.llm-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Quick Selection Model Chips */
+.llm-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.llm-chip {
+  padding: 3px 8px;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-family: var(--font-family-mono);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  line-height: 1.2;
+}
+
+.llm-chip:hover {
+  background: var(--color-bg-muted);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+.llm-chip.active {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.llm-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .llm-provider-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .llm-provider-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .llm-spec-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    min-height: auto;
+    margin-bottom: 6px;
+  }
+
+  .llm-spec-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .llm-spec-label {
+    width: auto;
+  }
+}
